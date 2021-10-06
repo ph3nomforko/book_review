@@ -5,10 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Category.destroy_all
+Book.destroy_all
+
 fantasy = Category.create(name:"Fantasy")
 sci_fi = Category.create(name:"Science Fiction")
 history = Category.create(name:"History")
 
-enders_game = Book.create(title:"Enders Game", author:"Orson Scott Card", description:"Kid soldier kills aliens", category_id:sci_fi.id)
-fellowship = Book.create(title:"Fellowship of the Ring", author:"J.R.R. Tolkien", description:"Hobbit is given impossible quest", category_id:fantasy.id)
-spqr = Book.create(title:"SPQR", author:"Mary Beard", description:"Historical account of the founding of Rome.", category_id:history.id)
+enders_game = Book.create(title:"Enders Game", author:"Orson Scott Card", description:"Kid soldier kills aliens", image_url:"https://en.wikipedia.org/wiki/Ender%27s_Game#/media/File:Ender's_game_cover_ISBN_0312932081.jpg", category_id:sci_fi.id)
+fellowship = Book.create(title:"Fellowship of the Ring", author:"J.R.R. Tolkien", description:"Hobbit is given impossible quest", image_url:"https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring#/media/File:The_Fellowship_of_the_Ring_cover.gif", category_id:fantasy.id)
+spqr = Book.create(title:"SPQR", author:"Mary Beard", description:"Historical account of the founding of Rome.", image_url:"https://en.wikipedia.org/wiki/SPQR:_A_History_of_Ancient_Rome#/media/File:SPQR_book.jpg", category_id:history.id)
