@@ -17,6 +17,6 @@ function getBooks() {
               <p>${book.attributes.category.name}</p>
             </div><br><br>`
             document.querySelector('#book-container').innerHTML += bookMarkup
-        });
+        })
     })
 }
