@@ -23,5 +23,15 @@ function getBooks() {
 
 document.addEventListener('submit', (e) => {
     e.preventDefault()
-    console.log(e)
+    const titleInput = document.querySelector("#input-title").value
+    const authorInput = document.querySelector("#input-author").value
+    const descriptionInput = document.querySelector("#input-description").value
+    const imgUrlInput = document.querySelector("#input-url").value
+    const publishingYearInput = document.querySelector("#input-published").value
+    const categoryId = parseInt(document.querySelector("#categories").value)
+    postFetch(titleInput, authorInput, descriptionInput, imgUrlInput, publishingYearInput, categoryId)
 })
+
+function postFetch(title, author, description, image_url, category_id) {
+    
+}
