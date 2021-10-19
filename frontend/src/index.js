@@ -48,14 +48,3 @@ function postBook(title, author, description, year_published, image_url, categor
     document.querySelector('#book-container').innerHTML += bookMarkup
     })
 }
-
-function render(book) {
-    const bookMarkup =
-        `<div data-id=${book.id}>
-            <img src=${book.attributes.image_url} width="200" height="250">
-            <h3>${book.attributes.title}</h3>
-            <p>${book.attributes.author}</p>
-            <p>${book.attributes.category.name}</p>
-        </div><br><br>`
-    document.querySelector('#book-container').innerHTML += bookMarkup
-}
