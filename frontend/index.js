@@ -8,16 +8,7 @@ function getBooks() {
     fetch(endPoint)
     .then(response => response.json())
     .then(books => {
-        books.data.forEach(book => {
-            const bookMarkup =
-            `<div data-id=${book.id}>
-              <img src=${book.attributes.image_url} width="300" height="350">
-              <h3>${book.attributes.title}</h3>
-              <p>${book.attributes.author}</p>
-              <p>${book.attributes.category.name}</p>
-            </div><br><br>`
-            document.querySelector('#book-container').innerHTML += bookMarkup
-        })
+        books.data.forEach(book => { render(book) })
     })
 }
 
@@ -41,13 +32,19 @@ function postFetch(title, author, description, year_published, image_url, catego
     })
     .then(response => response.json())
     .then(book => {
-        const bookMarkup =
-        `<div data-id=${book.id}>
-              <img src=${book.image_url} width="300" height="350">
-              <h3>${book.title}</h3>
-              <p>${book.author}</p>
-              <p>${book.category.name}</p>
-            </div><br><br>`
-        document.querySelector('#book-container').innerHTML += bookMarkup
+        console.log(book)
+        const bookData = book.data
+        render(bookData)
     })
+}
+
+function render(book) {
+    const bookMarkup =
+        `<div data-id=${book.id}>
+            <img src=${book.attributes.image_url} width="300" height="350">
+            <h3>${book.attributes.title}</h3>
+            <p>${book.attributes.author}</p>
+            <p>${book.attributes.category.name}</p>
+        </div><br><br>`
+    document.querySelector('#book-container').innerHTML += bookMarkup
 }
