@@ -9,8 +9,8 @@ function getBooks() {
     .then(response => response.json())
     .then(books => {
         books.data.forEach(book => {
-            let newBook = new Book(book, book.attributes)
-            render(book)
+            let newBook = new Book(book)
+            document.querySelector('#book-container').innerHTML += newBook.renderBookCard()
         })
     })
 }
@@ -27,8 +27,7 @@ document.addEventListener('submit', (e) => {
 })
 
 function postBook(title, author, description, year_published, image_url, category_id) {
-    console.log(title, author, description, year_published, image_url, category_id)
-    let bodyData = {title, author, description, year_published, image_url, category_id}
+    const bodyData = {title, author, description, year_published, image_url, category_id}
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -36,15 +35,9 @@ function postBook(title, author, description, year_published, image_url, categor
     })
     .then(response => response.json())
     .then(book => {
-        console.log(book)
-        // const bookData = book.data
-        const bookMarkup =
-        `<div data-id=${book.id}>
-            <img src=${book.image_url} width="200" height="250">
-            <h3>${book.title}</h3>
-            <p>${book.author}</p>
-            <p>${book.category.name}</p>
-        </div><br><br>`
-    document.querySelector('#book-container').innerHTML += bookMarkup
+        const bookData = book.data
+        debugger
+        let newBook = new Book(bookData)
+        document.querySelector('#book-container').innerHTML += newBook.renderBookCard()
     })
 }
