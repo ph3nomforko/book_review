@@ -2,6 +2,9 @@ const endPoint = "http://localhost:3000/api/v1/books"
 
 document.addEventListener('DOMContentLoaded', () => {
     getBooks()
+
+    let addBookForm = document.querySelector('#add-book-form')
+    addBookForm.addEventListener('submit', (e) => createFormHandler(e))
 })
 
 function getBooks() {
@@ -12,19 +15,20 @@ function getBooks() {
     })
 }
 
-document.addEventListener('submit', (e) => {
+function createFormHandler(e) {
     e.preventDefault()
     const titleInput = document.querySelector("#input-title").value
     const authorInput = document.querySelector("#input-author").value
     const descriptionInput = document.querySelector("#input-description").value
-    const imgUrlInput = document.querySelector("#input-url").value
     const publishingYearInput = document.querySelector("#input-published").value
+    const imgUrlInput = document.querySelector("#input-url").value
     const categoryId = parseInt(document.querySelector("#categories").value)
-    postFetch(titleInput, authorInput, descriptionInput, publishingYearInput, imgUrlInput, categoryId)
-})
+    postBook(titleInput, authorInput, descriptionInput, publishingYearInput, imgUrlInput, categoryId)
+}
 
-function postFetch(title, author, description, year_published, image_url, category_id) {
-    const bodyData = {title, author, description, year_published, image_url, category_id}
+function postBook(title, author, description, year_published, image_url, category_id) {
+    console.log(title, author, description, year_published, image_url, category_id)
+    let bodyData = {title, author, description, year_published, image_url, category_id}
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
