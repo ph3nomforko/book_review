@@ -1,13 +1,14 @@
 class Book {
-    constructor(id, bookAttributes) {
-        this.id = id
+    constructor(book, bookAttributes) {
+        this.id = book.id
+        debugger
         this.title = bookAttributes.title
         this.author = bookAttributes.author
         this.description = bookAttributes.description
         this.year_published = bookAttributes.year_published
         this.image_url = bookAttributes.image_url
         this.category = bookAttributes.category
-        Book.call.push(this)
+        //Book.call.push(this)
     }
     //renderBookCard() {
     //    return `
