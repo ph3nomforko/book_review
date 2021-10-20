@@ -17,6 +17,9 @@ class Book {
                 <p>${this.category.name}</p>
             </div><br><br>`
     }
+    static findById(id) {
+        return this.all.find(book => book.id === id)
+    }
 }
 
 Book.all = []
