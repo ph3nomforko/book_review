@@ -36,7 +36,6 @@ function postBook(title, author, description, year_published, image_url, categor
     .then(response => response.json())
     .then(book => {
         const bookData = book.data
-        debugger
         let newBook = new Book(bookData)
         document.querySelector('#book-container').innerHTML += newBook.renderBookCard()
     })
