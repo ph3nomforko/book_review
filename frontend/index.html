@@ -77,16 +77,43 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Add a Book to the Repository</h1>
         <p class="lead text-muted">If you do not see a book in the repository, add it by including the title, author, a brief description, the year it was published and a link to picture of its cover.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Add Book!</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
+        <form id="add-book-form"></form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Title" id="input-title">
+                <label for="input-title">Title</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Author" id="input-author">
+                <label for="input-author">Author</label>
+            </div>
+            <div class="form-floating mb-3">
+                <texarea class="form-control" placeholder="Summary" id="input-description" style="height:100px"></texarea>
+                <label for="description-label" style="font-size:1.25rem">Summary</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Initial Publishing Year" id="input-published">
+                <label for="input-published">Year Published</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Image URL" id="input-url">
+                <label for="input-url">Image URL</label>
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Choose a Category</option>
+                    <option value="1">Fantasy</option>
+                    <option value="2">Science Fiction</option>
+                    <option value="3">History</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
     </div>
   </section>
 
   <div class="album py-5 bg-light">
-    <div class="container">
+    <div class="book-container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
