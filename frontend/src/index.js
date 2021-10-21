@@ -1,15 +1,20 @@
 const endPoint = "http://localhost:3000/api/v1/books"
 
+
 document.addEventListener('DOMContentLoaded', () => {
     getBooks()
 
     let addBookButton = document.getElementById("add-book-button")
     addBookButton.addEventListener("click", (e) => createFormHandler(e))
 
-    let modalButton = document.getElementById("book-container")
-    modalButton.addEventListener('click', (e) => {
+    //let modalButton = document.getElementById("book-container")
+    let bookModal = document.getElementById("bookModal")
+    bookModal.addEventListener('show.bs.modal', (e) => {
         modalHandler(e)
     })
+/*    modalButton.addEventListener('click', (e) => {
+        modalHandler(e)
+    }) */
 })
 
 function getBooks() {
@@ -35,8 +40,8 @@ function createFormHandler(e) {
 }
 
 function modalHandler(e) {
-    e.preventDefault()
-    let buttonId = e.target.id
+    let button = e.relatedTarget
+    let buttonId = button.id
     let displayedBook = Book.findById(buttonId)
     document.querySelector(".container").innerHTML += displayedBook.renderBookModal()
 }
