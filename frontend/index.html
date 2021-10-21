@@ -87,8 +87,8 @@
                 <label for="input-author">Author</label>
             </div>
             <div class="form-floating mb-3">
-                <texarea class="form-control" placeholder="Summary" id="input-description" style="height:100px"></texarea>
-                <label for="description-label" style="font-size:1.2rem">Summary</label>
+                <textarea class="form-control" placeholder="Summary" id="input-description"></textarea>
+                <label for="description-label">Summary</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" placeholder="Initial Publishing Year" id="input-published">
@@ -99,14 +99,14 @@
                 <label for="input-url">Image URL</label>
             </div>
             <div class="mb-3">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" id="categories" aria-label="Default select example">
                     <option selected>Choose a Category</option>
                     <option value="1">Fantasy</option>
                     <option value="2">Science Fiction</option>
                     <option value="3">History</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-warning">Submit</button>
+            <button type="submit" class="btn btn-warning" id="add-book-button">Submit</button>
         </form>
       </div>
     </div>
