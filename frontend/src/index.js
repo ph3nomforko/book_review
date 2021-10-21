@@ -7,14 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let addBookButton = document.getElementById("add-book-button")
     addBookButton.addEventListener("click", (e) => createFormHandler(e))
 
-    //let modalButton = document.getElementById("book-container")
     let bookModal = document.getElementById("bookModal")
     bookModal.addEventListener('show.bs.modal', (e) => {
         modalHandler(e)
     })
-/*    modalButton.addEventListener('click', (e) => {
-        modalHandler(e)
-    }) */
 })
 
 function getBooks() {
@@ -43,7 +39,7 @@ function modalHandler(e) {
     let button = e.relatedTarget
     let buttonId = button.id
     let displayedBook = Book.findById(buttonId)
-    document.querySelector(".container").innerHTML += displayedBook.renderBookModal()
+    document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
 }
 //button.addEventListener('submit', (e) => {
 //    e.preventDefault()
