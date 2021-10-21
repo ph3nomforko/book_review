@@ -16,27 +16,12 @@ class Book {
                     <img src=${this.image_url} class="card-img-top">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <p>
-                                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                View
-                                </button>
-                                </p>
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        <h5>${this.title}</h5>
-                                        <h6>${this.author}</h6>
-                                        <p>${this.description}</p>
-                                        <p>${this.year_published}</p>
-                                        <p>${this.category.name}</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#bookModal" id="${this.id}">View Book</button>
                         </div>
                     </div>
                 </div>
             </div>`
-        //
+
         //    `<div data-id=${this.id}>
         //       <img src=${this.image_url} height="200" width="250">
         //        <h3>${this.title}</h3>
@@ -44,9 +29,9 @@ class Book {
         //   </div><br><br>`
     }
 
-/*    renderBookModal() {
+    renderBookModal() {
         console.log(this.title)
-        return `
+       return `
             <div class="modal fade" id="bookModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -65,7 +50,7 @@ class Book {
                 </div>
             </div>`   
     }
-*/
+    
     static findById(id) {
         return this.all.find(book => book.id === id)
     }
