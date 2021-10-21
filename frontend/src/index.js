@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     addBookButton.addEventListener("click", (e) => createFormHandler(e))
 
     let bookModal = document.getElementById("bookModal")
-    bookModal.addEventListener('show.bs.modal', (e) => {
-        modalHandler(e)
-    })
+    bookModal.addEventListener('show.bs.modal', (e) => modalHandler(e))
+
+    bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler(e))
 })
 
 function getBooks() {
