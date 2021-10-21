@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let addBookButton = document.getElementById("add-book-button")
     addBookButton.addEventListener("click", (e) => createFormHandler(e))
 
-    let modalButtons = document.getElementById("book-container")
-    modalButtons.addEventListener('click', (e) => {
-        const buttonId = e.target.id
-        modalHandler(buttonId)
+    let modalButton = document.getElementById("book-container")
+    modalButton.addEventListener('click', (e) => {
+        modalHandler(e)
     })
 })
 
@@ -35,10 +34,11 @@ function createFormHandler(e) {
     postBook(titleInput, authorInput, descriptionInput, publishingYearInput, imgUrlInput, categoryId)
 }
 
-function modalHandler(buttonId) {
+function modalHandler(e) {
+    e.preventDefault()
+    let buttonId = e.target.id
     let displayedBook = Book.findById(buttonId)
-    console.log(displayedBook.title)
-    displayedBook.renderBookModal()
+    document.querySelector(".container").innerHTML += displayedBook.renderBookModal()
 }
 //button.addEventListener('submit', (e) => {
 //    e.preventDefault()
