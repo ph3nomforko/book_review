@@ -2,8 +2,12 @@ const endPoint = "http://localhost:3000/api/v1/books"
 
 document.addEventListener('DOMContentLoaded', () => {
     getBooks()
+
     let addBookButton = document.getElementById("add-book-button")
     addBookButton.addEventListener("click", (e) => createFormHandler(e))
+
+    let modalButton = document.getElementById('bookModal')
+    console.log(modalButton)
 })
 
 function getBooks() {
