@@ -41,16 +41,6 @@ function modalHandler(e) {
     let displayedBook = Book.findById(buttonId)
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
 }
-//button.addEventListener('submit', (e) => {
-//    e.preventDefault()
-//    const titleInput = document.querySelector("#input-title").value
-//    const authorInput = document.querySelector("#input-author").value
-//    const descriptionInput = document.querySelector("#input-description").value
-//    const publishingYearInput = document.querySelector("#input-published").value
-//    const imgUrlInput = document.querySelector("#input-url").value
-//    const categoryId = parseInt(document.querySelector("#categories").value)
-//    postBook(titleInput, authorInput, descriptionInput, publishingYearInput, imgUrlInput, ////categoryId)
-//})
 
 function postBook(title, author, description, year_published, image_url, category_id) {
     const bodyData = {title, author, description, year_published, image_url, category_id}
