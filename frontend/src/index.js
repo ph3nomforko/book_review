@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addBookButton.addEventListener("click", (e) => createFormHandler(e))
 
     let bookModal = document.getElementById("bookModal")
-    bookModal.addEventListener('show.bs.modal', (e) => modalHandler(e))
+    bookModal.addEventListener('show.bs.modal', (e) => openModalHandler(e))
 
     bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler(e))
 })
@@ -35,11 +35,15 @@ function createFormHandler(e) {
     postBook(titleInput, authorInput, descriptionInput, publishingYearInput, imgUrlInput, categoryId)
 }
 
-function modalHandler(e) {
+function openModalHandler(e) {
     let button = e.relatedTarget
     let buttonId = button.id
     let displayedBook = Book.findById(buttonId)
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
+}
+
+function closeModalHandler(e) {
+    document.querySelector(".modal-content").innerHTML = ""
 }
 
 function postBook(title, author, description, year_published, image_url, category_id) {
