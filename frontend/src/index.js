@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let bookModal = document.getElementById("bookModal")
     bookModal.addEventListener('show.bs.modal', (e) => openModalHandler(e))
-
-    bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler(e))
+    bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler())
 })
 
 function getBooks() {
@@ -42,7 +41,7 @@ function openModalHandler(e) {
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
 }
 
-function closeModalHandler(e) {
+function closeModalHandler() {
     document.querySelector(".modal-content").innerHTML = ""
 }
 
