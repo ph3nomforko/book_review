@@ -13,11 +13,12 @@ class Book {
         return `
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src=${this.image_url} class="card-img-top">
+                    <img src=${this.image_url} class="card-img-top" width="100%">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#bookModal" id="${this.id}">View Book</button>
-                            <small class="text-muted">${this.category.name}</small>
+                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#bookModal" id="${this.id}">View Book</button>
+                            <button class="btn btn-sm btn-outline-info" type="button">Comment</button>
+                            <button class="btn btn-sm btn-outline-secondary" type="button">View Comments</button>
                         </div>
                     </div>
                 </div>
@@ -31,10 +32,11 @@ class Book {
                 <img src=${this.image_url}>
             </div>
             <div class="modal-body">
-                <h3>${this.title}</h3>
-                <h5>${this.author}</h5>
-                <h6>${this.year_published}</h6>
-                <p>${this.description}</p>
+                <h3>Title: ${this.title}</h3>
+                <h5>Author: ${this.author}</h5>
+                <h6>Year Published: ${this.year_published}</h6>
+                <p>Genre: ${this.category.name}<br>
+                Sumamry: ${this.description}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
