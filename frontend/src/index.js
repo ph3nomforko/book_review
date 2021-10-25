@@ -1,7 +1,5 @@
 const bookEndPoint = "http://localhost:3000/api/v1/books"
 const commentEndPoint = "http://localhost:3000/api/v1/comments"
-let commentArray = []
-
 
 document.addEventListener('DOMContentLoaded', () => {
     getBooks()
@@ -14,11 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     bookModal.addEventListener('show.bs.modal', (e) => openBookModalHandler(e))
     bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler(e))
 
-    let addCommentButton = document.getElementById("addCommentModal")
-    addCommentButton.addEventListener('show.bs.modal', (e) => addCommentHandler(e))
+    let commentButtonNode = document.querySelectorAll(".add-comment-btn")
+    let commentButtonArray = Array.from(commentButtonNode)
+    for (let i = 0; i < commentButtonArray.length; i++) {
+        commentButtonArray[i].addEventListener("click", addCommentFormHandler(e))
+    }
 
-    let viewCommentButton = document.getElementById("commentsModal")
-    viewCommentButton.addEventListener('show.bs.modal', (e) => viewCommentsHandler(e))
 })
 
 function getBooks() {
@@ -53,6 +52,10 @@ function createBookFormHandler(e) {
     postBook(titleInput, authorInput, descriptionInput, publishingYearInput, imgUrlInput, categoryId)
 }
 
+function addCommentFormHandler(e) {
+    console.log("HI!")
+}
+
 function openBookModalHandler(e) {
     let button = e.relatedTarget
     let buttonId = button.id
@@ -60,15 +63,6 @@ function openBookModalHandler(e) {
     let displayedBook = Book.findById(bookId)
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
 }
-
-/* function viewCommentsHandler(e) {
-    let button = e.relatedTarget
-    let buttonId = button.id
-    let bookId = idParser(buttonId)
-    bookId = parseInt(bookId)
-    let bookComments = Comment.all.filter(comment => comment.book.id === bookId)
-    document.getElementById("viewCommentsModal").innerHTML += modalComments
-} */
 
 function closeModalHandler(e) {
     document.querySelector(".modal-content").innerHTML = ""
