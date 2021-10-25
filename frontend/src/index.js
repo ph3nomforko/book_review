@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     bookModal.addEventListener('show.bs.modal', (e) => openBookModalHandler(e))
     bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler())
 
-    let viewCommentButtons = document.querySelector(".btn-outline-secondary")
-    viewCommentButtons.addEventListener("click", (e) => viewCommentModalHandler(e))
+    let addCommentButton = document.getElementById("addCommentModal")
+    addCommentButton.addEventListener("click", (e) => addCommentHandler(e))
 
-    let addCommentButton = document.querySelector(".btn-outline-warning")
-    addCommentButton.addEventListener("click", (e) => viewCommentsHandler(e))
+    let viewCommentButton = document.getElementById("viewCommentModal")
+    viewCommentButton.addEventListener("click", (e) => viewCommentsHandler(e))
 })
 
 function getBooks() {
