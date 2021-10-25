@@ -20,3 +20,5 @@ spqr = Book.create(title:"SPQR", author:"Mary Beard", description:"Historical ac
 the_hobbit = Book.create(title:"The Hobbit", author: "J.R.R. Tolkien", description:"Different hobbit is given different impossible quest (but with a dragon)", image_url:"https://cdn.pastemagazine.com/www/articles/hobbit300.jpg", year_published:1937, category_id:fantasy.id)
 
 first_comment = Comment.create(content:"It's my favorite book!", username:"oscard", book_id:enders_game.id)
+second_comment = Comment.create(content:"It's good but someone dies! :(", username:"bean", book_id:enders_game.id)
+third_comment = Comment.create(content:"Do I need to read the Silmarillion to enjoy this one?", username:"grrmartin", book_id:the_hobbit.id)
