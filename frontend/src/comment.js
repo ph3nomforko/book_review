@@ -20,15 +20,6 @@ class Comment {
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>`
-}
-
-    findCommentsByBook(bookId) {
-        let bookComments = []
-        bookComments = Comment.all.forEach(element => {
-            element.attributes.book.id === bookId
-            bookComments.push(element)
-        })
-        console.log(bookComments)
     }
 }
 
