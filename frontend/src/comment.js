@@ -5,6 +5,10 @@ class Comment {
         this.book = comment.attributes.book
         Comment.all.push(this)
     }
+
+    static findCommentsByBook(book) {
+        return
+    }
 }
 
 Comment.all = []
