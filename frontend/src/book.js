@@ -16,9 +16,9 @@ class Book {
                     <img src=${this.image_url} class="card-img-top" width="100%">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#bookModal" id="${this.id}">View Book</button>
+                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#bookModal" id="book-${this.id}">View Book</button>
                             <button class="btn btn-sm btn-outline-info" type="button" data-bs-toggle="modal" data-bs-target="#addCommentModal">Add Comment</button>
-                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#commentsModal">View Comments</button>
+                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#commentsModal" id="bookComments-${this.id}">View Comments</button>
                         </div>
                     </div>
                 </div>
