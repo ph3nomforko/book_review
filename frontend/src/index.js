@@ -1,8 +1,10 @@
-const endPoint = "http://localhost:3000/api/v1/books"
+const bookEndPoint = "http://localhost:3000/api/v1/books"
+const commentEndPoint = "http://localhost:3000/api/v1/comments"
 
 
 document.addEventListener('DOMContentLoaded', () => {
     getBooks()
+    getComments()
 
     let addBookButton = document.getElementById("add-book-button")
     addBookButton.addEventListener("click", (e) => createBookFormHandler(e))
@@ -19,12 +21,22 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function getBooks() {
-    fetch(endPoint)
+    fetch(bookEndPoint)
     .then(response => response.json())
     .then(books => {
         books.data.forEach(book => {
             let newBook = new Book(book)
             document.querySelector('#book-container').innerHTML += newBook.renderBookCard()
+        })
+    })
+}
+
+function getComments() {
+    fetch(commentEndPoint)
+    .this(response => response.json())
+    .then(comments => {
+        comments.data.forEach(comment => {
+            console.log(comment)
         })
     })
 }
@@ -49,10 +61,11 @@ function openBookModalHandler(e) {
 }
 
 function viewCommentsHandler(e) {
+    getComments()
     let button = e.relatedTarget
     let buttonId = button.id
-    let parsedId = idParser(buttonId)
-    console.log(parsedId)
+    let bookId = idParser(buttonId)
+    let displayedComments = Comment.findCommentsByBook(bookId)
 }
 
 function addCommentHandler(e) {
