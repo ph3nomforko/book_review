@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let bookModal = document.getElementById("bookModal")
     bookModal.addEventListener('show.bs.modal', (e) => openBookModalHandler(e))
-    bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler(e))
+    bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler())
 
 })
 
@@ -48,7 +48,13 @@ function createBookFormHandler(e) {
 
 function addCommentFormHandler(e) {
     e.preventDefault()
-    console.log(e)
+    const userInput = document.querySelector("#input-username").value
+    const contentInput = document.querySelector("#input-content").value
+    let tempCommentId = document.querySelector(".read-only-book-info")
+    tempCommentId = tempCommentId.id
+    const bookId = idParser(tempCommentId)
+    postComment(contentInput, userInput, bookId)
+    document.querySelector('.modal-footer').innerHTML = ""
 }
 
 function openBookModalHandler(e) {
@@ -62,13 +68,13 @@ function openBookModalHandler(e) {
     addCommentButton.addEventListener("click", (e) => addCommentFormHandler(e))
 }
 
-function closeModalHandler(e) {
+function closeModalHandler() {
     document.querySelector(".modal-content").innerHTML = ""
 }
 
 function postBook(title, author, description, year_published, image_url, category_id) {
     const bodyData = {title, author, description, year_published, image_url, category_id}
-    fetch(endPoint, {
+    fetch(bookEndPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(bodyData)
@@ -78,6 +84,22 @@ function postBook(title, author, description, year_published, image_url, categor
         const bookData = book.data
         let newBook = new Book(bookData)
         document.querySelector('#book-container').innerHTML += newBook.renderBookCard()
+    })
+}
+
+function postComment(content, username, book_id) {
+    const bodyData = {content, username, book_id}
+    fetch(commentEndPoint, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+    })
+    .then(response => response.json())
+    .then(comment => {
+        const commentData = comment.data
+        let newComment = new Comment(commentData)
+        let commentHtml = `<p>${newComment.content} by <i>${newComment.username}</i></p>`
+        document.querySelector('.modal-body').innerHTML += commentHtml
     })
 }
 
