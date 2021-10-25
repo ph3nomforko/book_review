@@ -28,7 +28,7 @@ class Book {
         let commentHtml = ""
         this.comments.forEach(comment => {
             commentHtml += `
-            <p>${comment.content} by ${comment.username}</p>`
+            <p>${comment.content} by <i>${comment.username}</i></p>`
         })
         return `
             <div class="modal-header">
@@ -58,7 +58,7 @@ class Book {
                                 <input type="text" class="form-control" id="input-content">
                             </div>
                             <div>
-                                <input class="form-control" type="text" id="comment-${this.id}" value="${this.title}" disabled readonly>
+                                <input class="form-control read-only-book-info" type="text" id="comment-${this.id}" value="${this.title}" disabled readonly>
                             </div>
                             <button type="submit" class="btn btn-warning" id="add-comment-button">Submit</button>
                         </div>
