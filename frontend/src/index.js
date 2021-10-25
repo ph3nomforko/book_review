@@ -5,11 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     getBooks()
 
     let addBookButton = document.getElementById("add-book-button")
-    addBookButton.addEventListener("click", (e) => createFormHandler(e))
+    addBookButton.addEventListener("click", (e) => createBookFormHandler(e))
 
     let bookModal = document.getElementById("bookModal")
-    bookModal.addEventListener('show.bs.modal', (e) => openModalHandler(e))
+    bookModal.addEventListener('show.bs.modal', (e) => openBookModalHandler(e))
     bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler())
+
+    let viewCommentButtons = document.querySelector(".btn-outline-secondary")
+    viewCommentButtons.addEventListener("click", (e) => viewCommentModalHandler(e))
+
+    let addCommentButton = document.querySelector(".btn-outline-warning")
+    addCommentButton.addEventListener("click", (e) => viewCommentsHandler(e))
 })
 
 function getBooks() {
@@ -23,7 +29,7 @@ function getBooks() {
     })
 }
 
-function createFormHandler(e) {
+function createBookFormHandler(e) {
     e.preventDefault()
     const titleInput = document.querySelector("#input-title").value
     const authorInput = document.querySelector("#input-author").value
@@ -34,11 +40,16 @@ function createFormHandler(e) {
     postBook(titleInput, authorInput, descriptionInput, publishingYearInput, imgUrlInput, categoryId)
 }
 
-function openModalHandler(e) {
+function openBookModalHandler(e) {
     let button = e.relatedTarget
     let buttonId = button.id
     let displayedBook = Book.findById(buttonId)
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
+}
+
+function viewCommentModalHandler(e) {
+    let button = e.relatedTarget
+    let 
 }
 
 function closeModalHandler() {
