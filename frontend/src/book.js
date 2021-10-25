@@ -46,6 +46,21 @@ class Book {
             <div class="modal-footer">
                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">Add a Comment</button>
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="collapse" id="collapseExample">
+                    <form id="add-comment-form">
+                        <div class="row mb-3">
+                            <label for="input-username" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="input-username">
+                            </div>
+                            <label for="input-content" class="col-sm-2 col-form-label">Comment</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="input-content">
+                            </div>
+                            <button type="submit" class="btn btn-warning" id="add-comment-button">Submit</button>
+                        </div>
+                    </form>
+              </div>
             </div>`
     }
 
