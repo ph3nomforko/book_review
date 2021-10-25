@@ -57,6 +57,9 @@ class Book {
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="input-content">
                             </div>
+                            <div>
+                                <input class="form-control" type="text" id="comment-${this.id}" value="${this.title}" disabled readonly>
+                            </div>
                             <button type="submit" class="btn btn-warning" id="add-comment-button">Submit</button>
                         </div>
                     </form>
