@@ -32,11 +32,12 @@ function getBooks() {
 }
 
 function getComments() {
+    let fetchedComments = []
     fetch(commentEndPoint)
-    .this(response => response.json())
+    .then(response => response.json())
     .then(comments => {
         comments.data.forEach(comment => {
-            console.log(comment)
+            fetchedComments.push(comment)
         })
     })
 }
