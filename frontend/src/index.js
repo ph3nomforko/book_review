@@ -43,13 +43,16 @@ function createBookFormHandler(e) {
 function openBookModalHandler(e) {
     let button = e.relatedTarget
     let buttonId = button.id
-    let displayedBook = Book.findById(buttonId)
+    let parsedId = idParser(buttonId)
+    let displayedBook = Book.findById(parsedId)
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
 }
 
 function viewCommentsHandler(e) {
-    e.preventDefault()
-    console.log(e)
+    let button = e.relatedTarget
+    let buttonId = button.id
+    let parsedId = idParser(buttonId)
+    console.log(parsedId)
 }
 
 function addCommentHandler(e) {
@@ -73,4 +76,9 @@ function postBook(title, author, description, year_published, image_url, categor
         let newBook = new Book(bookData)
         document.querySelector('#book-container').innerHTML += newBook.renderBookCard()
     })
+}
+
+function idParser(buttonId) {
+    let tempId = buttonId.split("-")
+    return tempId[1]
 }
