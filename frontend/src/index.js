@@ -12,12 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     bookModal.addEventListener('show.bs.modal', (e) => openBookModalHandler(e))
     bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler(e))
 
-    let commentButtonNode = document.querySelectorAll(".add-comment-btn")
-    let commentButtonArray = Array.from(commentButtonNode)
-    for (let i = 0; i < commentButtonArray.length; i++) {
-        commentButtonArray[i].addEventListener("click", addCommentFormHandler(e))
-    }
-
 })
 
 function getBooks() {
@@ -53,7 +47,8 @@ function createBookFormHandler(e) {
 }
 
 function addCommentFormHandler(e) {
-    console.log("HI!")
+    e.preventDefault()
+    console.log(e)
 }
 
 function openBookModalHandler(e) {
@@ -62,6 +57,9 @@ function openBookModalHandler(e) {
     let bookId = idParser(buttonId)
     let displayedBook = Book.findById(bookId)
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
+
+    let addCommentButton = document.getElementById("add-comment-button")
+    addCommentButton.addEventListener("click", (e) => addCommentFormHandler(e))
 }
 
 function closeModalHandler(e) {
