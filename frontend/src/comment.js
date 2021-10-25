@@ -6,7 +6,10 @@ class Comment {
         Comment.all.push(this)
     }
 
-    static findCommentsByBook(book) {
+    static findCommentsByBook(bookId) {
+        let requestedBook = Book.findById(bookId)
+        let bookComments = []
+        console.log(requestedBook)
         return
     }
 }
