@@ -17,8 +17,7 @@ class Book {
                     <img src=${this.image_url} class="card-img-top" width="100%">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <button class="btn btn-sm btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#bookModal" id="book-${this.id}">View Book</button>
-                            <button class="btn btn-sm btn-outline-info" type="button" data-bs-toggle="modal" data-bs-target="#addCommentModal">Add Comment</button>
+                            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#bookModal" id="book-${this.id}">View Book</button>
                         </div>
                     </div>
                 </div>
@@ -29,7 +28,7 @@ class Book {
         let commentHtml = ""
         this.comments.forEach(comment => {
             commentHtml += `
-            <p>(${comment.id}) ${comment.content} by ${comment.username}</p>`
+            <p>${comment.content} by ${comment.username}</p>`
         })
         return `
             <div class="modal-header">
@@ -45,7 +44,8 @@ class Book {
                 ${commentHtml}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">Add a Comment</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
             </div>`
     }
 
