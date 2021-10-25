@@ -45,6 +45,7 @@ class Book {
     static findById(id) {
         return this.all.find(book => book.id === id)
     }
+
 }
 
 Book.all = []
