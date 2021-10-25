@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let bookModal = document.getElementById("bookModal")
     bookModal.addEventListener('show.bs.modal', (e) => openBookModalHandler(e))
-    bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler())
+    bookModal.addEventListener('hide.bs.modal', (e) => closeModalHandler(e))
 
     let addCommentButton = document.getElementById("addCommentModal")
-    addCommentButton.addEventListener("click", (e) => addCommentHandler(e))
+    addCommentButton.addEventListener('show.bs.modal', (e) => addCommentHandler(e))
 
     let viewCommentButton = document.getElementById("commentsModal")
     viewCommentButton.addEventListener('show.bs.modal', (e) => viewCommentsHandler(e))
@@ -61,22 +61,16 @@ function openBookModalHandler(e) {
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
 }
 
-function viewCommentsHandler(e) {
+/* function viewCommentsHandler(e) {
     let button = e.relatedTarget
     let buttonId = button.id
     let bookId = idParser(buttonId)
     bookId = parseInt(bookId)
-    const allComments = Comment.all
-    const bookComments = allComments.filter(comment => comment.book.id === bookId)
-    document.querySelector(".modal-content").innerHTML += bookComments.renderCommentsModal()
-}
+    let bookComments = Comment.all.filter(comment => comment.book.id === bookId)
+    document.getElementById("viewCommentsModal").innerHTML += modalComments
+} */
 
-function addCommentHandler(e) {
-    console.log(e)
-    document.querySelector(".modal-content").innerHTML += renderAddCommentModal()
-}
-
-function closeModalHandler() {
+function closeModalHandler(e) {
     document.querySelector(".modal-content").innerHTML = ""
 }
 
@@ -98,21 +92,4 @@ function postBook(title, author, description, year_published, image_url, categor
 function idParser(buttonId) {
     let tempId = buttonId.split("-")
     return tempId[1]
-}
-
-function renderAddCommentModal() {
-    return `
-    <form id="add-comment-form" class="form-horizontal">
-        <div class="form-group">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" placeholder="Comment" id="input-content">
-                <label for="input-content">Content</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" placeholder="Username" id="input-username">
-                <label for="input-username">Username</label>
-            </div>
-            <button type="submit" class="btn btn-warning" id="add-comment-button">Submit</button>
-        </div>
-    </form>`
 }
