@@ -1,5 +1,6 @@
 const bookEndPoint = "http://localhost:3000/api/v1/books"
 const commentEndPoint = "http://localhost:3000/api/v1/comments"
+let commentArray = []
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,12 +33,11 @@ function getBooks() {
 }
 
 function getComments() {
-    let fetchedComments = []
     fetch(commentEndPoint)
     .then(response => response.json())
     .then(comments => {
         comments.data.forEach(comment => {
-            fetchedComments.push(comment)
+            new Comment(comment)
         })
     })
 }
@@ -56,21 +56,24 @@ function createBookFormHandler(e) {
 function openBookModalHandler(e) {
     let button = e.relatedTarget
     let buttonId = button.id
-    let parsedId = idParser(buttonId)
-    let displayedBook = Book.findById(parsedId)
+    let bookId = idParser(buttonId)
+    let displayedBook = Book.findById(bookId)
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
 }
 
 function viewCommentsHandler(e) {
-    getComments()
     let button = e.relatedTarget
     let buttonId = button.id
     let bookId = idParser(buttonId)
-    let displayedComments = Comment.findCommentsByBook(bookId)
+    bookId = parseInt(bookId)
+    const allComments = Comment.all
+    const bookComments = allComments.filter(comment => comment.book.id === bookId)
+    document.querySelector(".modal-content").innerHTML += bookComments.renderCommentsModal()
 }
 
 function addCommentHandler(e) {
-
+    console.log(e)
+    document.querySelector(".modal-content").innerHTML += renderAddCommentModal()
 }
 
 function closeModalHandler() {
@@ -95,4 +98,21 @@ function postBook(title, author, description, year_published, image_url, categor
 function idParser(buttonId) {
     let tempId = buttonId.split("-")
     return tempId[1]
+}
+
+function renderAddCommentModal() {
+    return `
+    <form id="add-comment-form" class="form-horizontal">
+        <div class="form-group">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Comment" id="input-content">
+                <label for="input-content">Content</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Username" id="input-username">
+                <label for="input-username">Username</label>
+            </div>
+            <button type="submit" class="btn btn-warning" id="add-comment-button">Submit</button>
+        </div>
+    </form>`
 }
