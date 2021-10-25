@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let addCommentButton = document.getElementById("addCommentModal")
     addCommentButton.addEventListener("click", (e) => addCommentHandler(e))
 
-    let viewCommentButton = document.getElementById("viewCommentModal")
-    viewCommentButton.addEventListener("click", (e) => viewCommentsHandler(e))
+    let viewCommentButton = document.getElementById("commentsModal")
+    viewCommentButton.addEventListener('show.bs.modal', (e) => viewCommentsHandler(e))
 })
 
 function getBooks() {
@@ -47,9 +47,13 @@ function openBookModalHandler(e) {
     document.querySelector(".modal-content").innerHTML += displayedBook.renderBookModal()
 }
 
-function viewCommentModalHandler(e) {
-    let button = e.relatedTarget
-    let 
+function viewCommentsHandler(e) {
+    e.preventDefault()
+    console.log(e)
+}
+
+function addCommentHandler(e) {
+
 }
 
 function closeModalHandler() {
