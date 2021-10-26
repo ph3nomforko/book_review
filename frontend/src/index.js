@@ -1,9 +1,11 @@
 const bookEndPoint = "http://localhost:3000/api/v1/books"
 const commentEndPoint = "http://localhost:3000/api/v1/comments"
+const categoryEndPoint = "http://localhost:3000/api/v1/categories"
 
 document.addEventListener('DOMContentLoaded', () => {
     getBooks()
     getComments()
+    getCategories()
 
     let addBookButton = document.getElementById("add-book-button")
     addBookButton.addEventListener("click", (e) => createBookFormHandler(e))
@@ -21,6 +23,17 @@ function getBooks() {
         books.data.forEach(book => {
             let newBook = new Book(book)
             document.querySelector('#book-container').innerHTML += newBook.renderBookCard()
+        })
+    })
+}
+
+function getCategories() {
+    fetch(categoryEndPoint)
+    .then(response => response.json())
+    .then(categories => {
+        categories.data.forEach(category => {
+            let newCategory = new Category(category)
+            document.querySelector("#categories").innerHTML += newCategory.renderCategoryList()
         })
     })
 }
