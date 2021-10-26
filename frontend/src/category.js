@@ -6,6 +6,8 @@ class Category {
     }
 
     renderCategoryList() {
-        
+        return `
+        <option value="${this.id}">${this.name}</option>
+        `
     }
 }
