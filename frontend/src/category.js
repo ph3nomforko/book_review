@@ -4,4 +4,8 @@ class Category {
         this.name = category.attributes.name
         this.books = category.attributes.books
     }
+
+    renderCategoryList() {
+        
+    }
 }
