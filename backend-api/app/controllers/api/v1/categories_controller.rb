@@ -4,14 +4,6 @@ class Api::V1::CategoriesController < ApplicationController
         render json: CategorySerializer.new(categories)
     end
 
-    def create
-        category = Category.new(category_params)
-        if category.save
-            render json: category, status: :accepted
-        else
-            render json: {errors: category.errors.full_messages}, status: :unprocessible_entity
-        end
-    end
 
     private
 
